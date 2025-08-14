@@ -1,0 +1,32 @@
+# Security Headers for Admin Panel
+<IfModule mod_headers.c>
+    # Prevent caching of admin pages
+    <FilesMatch "admin\.html$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # Security headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Redirect old admin panel to secure location
+RewriteEngine On
+RewriteRule ^admin\.html$ /admin/ [R=301,L]
+
+# Prevent access to old admin files
+<Files "admin.html">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Security: Block access to sensitive files
+<FilesMatch "\.(yml|yaml|json|md|txt)$">
+    <RequireAll>
+        Require all granted
+    </RequireAll>
+</FilesMatch>
