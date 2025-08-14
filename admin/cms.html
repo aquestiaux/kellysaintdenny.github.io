@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://kellysaintdenny.com/admin/cms.html" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
   <style>
     .cms-container { min-height: 100vh; background: var(--bg); display: flex; flex-direction: column; }
     .cms-header { background: var(--card); border-bottom: 1px solid var(--border); padding: 1rem 0; }
@@ -51,7 +51,7 @@
         <nav class="cms-nav">
           <a href="/" target="_blank">View Site</a>
           <a href="/admin/" target="_blank">Admin Home</a>
-          <div data-netlify-identity-menu></div>
+
           <button id="theme-toggle" class="btn btn-secondary">🌓</button>
         </nav>
       </div>
@@ -91,10 +91,7 @@
               </div>
             </div>
             
-            <div class="cms-setup-notice">
-              <h4>🔐 Authentication Status</h4>
-              <div id="authStatus">Checking authentication...</div>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -113,57 +110,19 @@
     
     // CMS Interface Functions
     function showBlogEditor() {
-      alert('Blog editor will be implemented with full OAuth setup');
+      alert('Blog editor will be implemented soon!');
     }
     
     function showBlogList() {
-      alert('Blog list will be implemented with full OAuth setup');
+      alert('Blog list will be implemented soon!');
     }
     
     function showSiteSettings() {
-      alert('Site settings will be implemented with full OAuth setup');
+      alert('Site settings will be implemented soon!');
     }
     
     function showAnalytics() {
-      alert('Analytics will be implemented with full OAuth setup');
-    }
-    
-    // Update authentication status
-    function updateAuthStatus(user) {
-      const authStatus = document.getElementById('authStatus');
-      if (user) {
-        authStatus.innerHTML = `
-          <div style="color: #10b981; font-weight: 600;">
-            ✅ Authenticated as ${user.email}
-          </div>
-          <p style="margin-top: 0.5rem; color: var(--muted);">
-            You can now access all CMS features
-          </p>
-        `;
-      } else {
-        authStatus.innerHTML = `
-          <div style="color: #f59e0b; font-weight: 600;">
-            ⚠️ Not authenticated
-          </div>
-          <p style="margin-top: 0.5rem; color: var(--muted);">
-            Please log in to access CMS features
-          </p>
-        `;
-      }
-    }
-    
-    // Netlify Identity: handle authentication
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
-        updateAuthStatus(user);
-        if (!user) {
-          window.netlifyIdentity.on('login', () => {
-            updateAuthStatus(user);
-          });
-        }
-      });
-    } else {
-      updateAuthStatus(null);
+      alert('Analytics will be implemented soon!');
     }
   </script>
 </body>

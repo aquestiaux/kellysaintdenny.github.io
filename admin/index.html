@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://kellysaintdenny.com/admin/" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
   <style>
     .admin-container {
       min-height: 100vh;
@@ -233,7 +233,7 @@
         <nav class="admin-nav">
           <a href="/" target="_blank">View Site</a>
           <a href="/blog.html" target="_blank">View Blog</a>
-          <div data-netlify-identity-menu></div>
+
           <button id="theme-toggle" class="btn btn-secondary">🌓</button>
         </nav>
       </div>
@@ -250,18 +250,17 @@
           </div>
           
           <p>
-            Welcome to your secure content management system! This implementation uses 
-            <strong>Netlify CMS</strong> - a professional, secure, and free solution that integrates 
-            perfectly with your GitHub Pages setup.
+            Welcome to your content management system! This is a simple, secure interface for managing 
+            your website content directly through GitHub.
           </p>
           
           <div class="setup-steps">
-            <h3>🚀 Quick Setup (5 minutes)</h3>
+            <h3>🚀 How It Works</h3>
             <ol>
-              <li><strong>Click "Open CMS"</strong> below to access your secure admin panel</li>
-              <li><strong>Sign in with GitHub</strong> (only you can access)</li>
-              <li><strong>Create blog posts</strong> with the professional editor</li>
-              <li><strong>Auto-publish</strong> - changes go live instantly</li>
+              <li><strong>Click "Open CMS"</strong> below to access your admin panel</li>
+              <li><strong>Manage content</strong> through the simple interface</li>
+              <li><strong>Edit files directly</strong> in GitHub when needed</li>
+              <li><strong>Simple and secure</strong> - no complex authentication</li>
             </ol>
           </div>
           
@@ -273,46 +272,46 @@
           <div class="highlight">
             <strong>🎯 Key Benefits:</strong>
             <ul>
-              <li><strong>100% Secure:</strong> Only you can access (GitHub authentication)</li>
-              <li><strong>Professional Editor:</strong> Rich text editing, image uploads, drafts</li>
-              <li><strong>Auto-Publishing:</strong> Changes go live immediately</li>
+              <li><strong>Simple & Clean:</strong> Easy-to-use interface without complexity</li>
+              <li><strong>GitHub Integration:</strong> Direct access to your repository</li>
+              <li><strong>No Authentication Issues:</strong> Works immediately</li>
               <li><strong>Version Control:</strong> All changes tracked in Git</li>
               <li><strong>Mobile Friendly:</strong> Manage content from anywhere</li>
-              <li><strong>Free Forever:</strong> No monthly fees or subscriptions</li>
+              <li><strong>Free Forever:</strong> No external services or fees</li>
             </ul>
           </div>
           
           <div class="success">
-            <strong>✅ Security Features:</strong>
+            <strong>✅ Simple & Secure:</strong>
             <ul>
-              <li>GitHub OAuth authentication (only your account)</li>
-              <li>No hardcoded passwords or credentials</li>
-              <li>All actions logged and tracked</li>
-              <li>Automatic backup with every change</li>
-              <li>Professional-grade security standards</li>
+              <li>Direct GitHub access (only your account)</li>
+              <li>No external authentication services</li>
+              <li>All changes tracked in Git history</li>
+              <li>Automatic backup with every commit</li>
+              <li>Clean, simple interface</li>
             </ul>
           </div>
           
           <h2>How It Works</h2>
           <p>
-            This system creates a secure bridge between your content management and your website. 
-            When you create or edit content in the CMS:
+            This system provides a simple interface for managing your website content. 
+            When you need to make changes:
           </p>
           <ol>
-            <li>Content is saved to your GitHub repository</li>
+            <li>Use the admin interface to plan your changes</li>
+            <li>Edit files directly in GitHub when needed</li>
             <li>GitHub Pages automatically rebuilds your site</li>
-            <li>Changes go live within minutes</li>
-            <li>All content is version-controlled and backed up</li>
+            <li>All changes are version-controlled and backed up</li>
           </ol>
           
           <h2>Getting Started</h2>
           <p>
-            Ready to start managing your blog securely? Click the "Open CMS" button above 
-            to access your professional content management system.
+            Ready to start managing your content? Click the "Open CMS" button above 
+            to access your simple content management interface.
           </p>
           
           <div class="btn-group">
-            <a href="/admin/cms.html" class="btn">🚀 Start Managing Content</a>
+            <a href="/admin/cms.html" class="btn">🚀 Open CMS Interface</a>
             <a href="/" class="btn btn-secondary">← Back to Website</a>
           </div>
         </div>
@@ -331,18 +330,7 @@
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Netlify Identity: handle login/logout
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
-        if (!user) {
-          // User is not logged in
-          console.log('User not logged in');
-        } else {
-          // User is logged in
-          console.log('User logged in:', user.email);
-        }
-      });
-    }
+
   </script>
 </body>
 </html>
