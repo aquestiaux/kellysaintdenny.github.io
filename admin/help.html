@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help & Documentation – Dr. Kelly Saint Denny</title>
+  <meta name="description" content="Setup instructions and help for the secure CMS" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://kellysaintdenny.com/admin/help.html" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .help-container {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .help-header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    
+    .help-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .help-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    .help-brand img {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .help-nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .help-nav a {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background .2s ease;
+    }
+    
+    .help-nav a:hover {
+      background: color-mix(in srgb, var(--accent) 80%, transparent);
+    }
+    
+    .help-main {
+      flex: 1;
+      padding: 2rem 0;
+    }
+    
+    .help-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .help-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    
+    .help-content h2 {
+      font-size: 1.8rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    
+    .help-content h3 {
+      font-size: 1.4rem;
+      margin: 2rem 0 1rem;
+      color: var(--text);
+    }
+    
+    .help-content p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    
+    .help-content ul, .help-content ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .help-content li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+    
+    .help-content code {
+      background: var(--bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+      border: 1px solid var(--border);
+      color: var(--accent);
+    }
+    
+    .help-content pre {
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .help-content pre code {
+      background: none;
+      padding: 0;
+      border: none;
+      color: var(--text);
+    }
+    
+    .help-content blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--muted);
+    }
+    
+    .help-content .warning {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #f59e0b;
+      margin: 2rem 0;
+    }
+    
+    .help-content .success {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #10b981;
+      margin: 2rem 0;
+    }
+    
+    .help-content .info {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #3b82f6;
+      margin: 2rem 0;
+    }
+    
+    .help-content .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    
+    .help-content .step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .help-content .step h4 {
+      margin: 0 0 1rem;
+      color: var(--accent);
+    }
+    
+    .help-content .step p {
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    .help-content .step ul {
+      margin: 1rem 0 0;
+    }
+    
+    .help-content .step li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .help-content .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+    
+    .help-content .code-header {
+      background: var(--card);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .help-content .code-body {
+      padding: 1rem;
+    }
+    
+    .help-content .code-body pre {
+      margin: 0;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    
+    .help-content .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background .2s ease;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+    
+    .help-content .btn:hover {
+      background: color-mix(in srgb, var(--accent) 80%, transparent);
+    }
+    
+    .help-content .btn-secondary {
+      background: var(--muted);
+      color: var(--text);
+    }
+    
+    .help-content .btn-secondary:hover {
+      background: color-mix(in srgb, var(--muted) 80%, transparent);
+    }
+    
+    .help-content .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .help-content .toc h3 {
+      margin: 0 0 1rem;
+      color: var(--accent);
+    }
+    
+    .help-content .toc ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .help-content .toc li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .help-content .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    .help-content .toc a:hover {
+      text-decoration: underline;
+    }
+    
+    .help-footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+      text-align: center;
+      color: var(--muted);
+    }
+    
+    .help-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: var(--card);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .help-content th,
+    .help-content td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .help-content th {
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    
+    .help-content tr:hover {
+      background: color-mix(in srgb, var(--bg) 20%, transparent);
+    }
+  </style>
+</head>
+<body>
+  <div class="help-container">
+    <header class="help-header">
+      <div class="container">
+        <a href="/admin/" class="help-brand">
+          <img src="/assets/logo.svg" alt="" />
+          <span>Dr. Kelly Saint Denny - Help</span>
+        </a>
+        <nav class="help-nav">
+          <a href="/admin/" target="_blank">Admin Home</a>
+          <a href="/admin/cms.html" target="_blank">Open CMS</a>
+          <button id="theme-toggle" class="btn btn-secondary">🌓</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="help-main">
+      <div class="help-content">
+        <h1>Help & Documentation</h1>
+        
+        <div class="info">
+          <strong>📚 Complete Setup Guide:</strong> This documentation will walk you through setting up 
+          your secure Content Management System step by step. The process takes about 5-10 minutes 
+          and only needs to be done once.
+        </div>
+        
+        <div class="toc">
+          <h3>📋 Table of Contents</h3>
+          <ul>
+            <li><a href="#overview">Overview & Benefits</a></li>
+            <li><a href="#setup">Setup Instructions</a></li>
+            <li><a href="#usage">Using the CMS</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#security">Security Features</a></li>
+            <li><a href="#support">Support & Resources</a></li>
+          </ul>
+        </div>
+        
+        <h2 id="overview">Overview & Benefits</h2>
+        
+        <p>
+          Your new Content Management System uses <strong>Netlify CMS</strong>, a professional-grade 
+          solution that provides enterprise-level security and features while remaining completely free. 
+          Here's what makes this system special:
+        </p>
+        
+        <div class="success">
+          <strong>🎯 Key Benefits:</strong>
+          <ul>
+            <li><strong>100% Secure:</strong> GitHub OAuth authentication - only you can access</li>
+            <li><strong>Professional Editor:</strong> Rich text editing, image uploads, markdown support</li>
+            <li><strong>Auto-Publishing:</strong> Changes go live immediately after saving</li>
+            <li><strong>Version Control:</strong> Every change is tracked and can be reverted</li>
+            <li><strong>Mobile Friendly:</strong> Manage content from any device</li>
+            <li><strong>Free Forever:</strong> No monthly fees or subscriptions</li>
+            <li><strong>Git Integration:</strong> Seamless integration with your GitHub repository</li>
+          </ul>
+        </div>
+        
+        <h2 id="setup">Setup Instructions</h2>
+        
+        <div class="warning">
+          <strong>⚠️ Important:</strong> These setup steps only need to be completed once. 
+          After setup, you'll have instant access to your secure CMS.
+        </div>
+        
+        <div class="step" data-step="1">
+          <h4>Enable GitHub OAuth</h4>
+          <p>
+            First, we need to authorize the CMS to access your GitHub repository securely:
+          </p>
+          <ol>
+            <li>Go to <a href="https://github.com/settings/developers" target="_blank">GitHub Developer Settings</a></li>
+            <li>Click "New OAuth App"</li>
+            <li>Fill in the following details:</li>
+          </ol>
+          
+          <div class="code-block">
+            <div class="code-header">OAuth App Configuration</div>
+            <div class="code-body">
+              <pre><code>Application name: Kelly Saint Denny CMS
+Homepage URL: https://kellysaintdenny.com
+Authorization callback URL: https://kellysaintdenny.com/admin/cms/index.html</code></pre>
+            </div>
+          </div>
+          
+          <p>
+            After creating the OAuth app, you'll get a <strong>Client ID</strong> and 
+            <strong>Client Secret</strong>. Save these securely - you'll need them in the next step.
+          </p>
+        </div>
+        
+        <div class="step" data-step="2">
+          <h4>Configure Netlify Identity</h4>
+          <p>
+            Since you're using GitHub Pages, we'll use Netlify's free identity service for authentication:
+          </p>
+          <ol>
+            <li>Go to <a href="https://app.netlify.com/" target="_blank">Netlify Dashboard</a></li>
+            <li>Click "Add new site" → "Import an existing project"</li>
+            <li>Connect your GitHub account and select <code>kellysaintdenny.github.io</code></li>
+            <li>In Site settings → Identity, click "Enable Identity"</li>
+            <li>Go to Identity → Settings → Registration</li>
+            <li>Set "Registration preferences" to "Invite only"</li>
+            <li>Go to Identity → Settings → External providers</li>
+            <li>Enable GitHub and enter your OAuth credentials from Step 1</li>
+          </ol>
+        </div>
+        
+        <div class="step" data-step="3">
+          <h4>Update CMS Configuration</h4>
+          <p>
+            Now we need to update the CMS configuration with your Netlify site details:
+          </p>
+          
+          <div class="code-block">
+            <div class="code-header">Update admin/config.yml</div>
+            <div class="code-body">
+              <pre><code>backend:
+  name: git-gateway
+  branch: main
+  base_url: https://YOUR_NETLIFY_SITE.netlify.app
+
+local_backend: false
+
+# ... rest of the configuration stays the same</code></pre>
+            </div>
+          </div>
+          
+          <p>
+            Replace <code>YOUR_NETLIFY_SITE</code> with your actual Netlify site URL 
+            (e.g., <code>amazing-kelly-cms.netlify.app</code>).
+          </p>
+        </div>
+        
+        <div class="step" data-step="4">
+          <h4>Add Netlify Identity Widget</h4>
+          <p>
+            Add the Netlify Identity widget to your admin pages:
+          </p>
+          
+          <div class="code-block">
+            <div class="code-header">Add to admin/cms.html (before closing &lt;/head&gt;)</div>
+            <div class="code-body">
+              <pre><code>&lt;script src="https://identity.netlify.com/v1/netlify-identity-widget.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+          
+          <div class="code-block">
+            <div class="code-header">Add to admin/cms.html (before closing &lt;/body&gt;)</div>
+            <div class="code-body">
+              <pre><code>&lt;script&gt;
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user =&gt; {
+      if (!user) {
+        window.netlifyIdentity.on("login", () =&gt; {
+          document.location.href = "/admin/cms/";
+        });
+      }
+    });
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+        
+        <div class="step" data-step="5">
+          <h4>Test Your Setup</h4>
+          <p>
+            Now it's time to test your secure CMS:
+          </p>
+          <ol>
+            <li>Visit <code>https://kellysaintdenny.com/admin/cms.html</code></li>
+            <li>Click "Open CMS"</li>
+            <li>Sign in with your GitHub account</li>
+            <li>You should see the professional CMS interface</li>
+            <li>Try creating a test blog post</li>
+          </ol>
+        </div>
+        
+        <h2 id="usage">Using the CMS</h2>
+        
+        <p>
+          Once your CMS is set up, you'll have access to a professional content management interface:
+        </p>
+        
+        <h3>Creating Blog Posts</h3>
+        <ol>
+          <li>Click "New Blog Post" in the CMS</li>
+          <li>Fill in the title, content, and metadata</li>
+          <li>Use the rich text editor or markdown for content</li>
+          <li>Add tags and categories for organization</li>
+          <li>Set the language (English or French)</li>
+          <li>Click "Publish" to go live immediately</li>
+        </ol>
+        
+        <h3>Managing Content</h3>
+        <ul>
+          <li><strong>Drafts:</strong> Save posts as drafts to work on later</li>
+          <li><strong>Editing:</strong> Click any existing post to edit it</li>
+          <li><strong>Media:</strong> Upload images and files directly</li>
+          <li><strong>Version Control:</strong> All changes are tracked in Git</li>
+        </ul>
+        
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        
+        <div class="warning">
+          <strong>Common Issues & Solutions:</strong>
+        </div>
+        
+        <h3>Authentication Issues</h3>
+        <ul>
+          <li><strong>Can't sign in:</strong> Check that GitHub OAuth is properly configured</li>
+          <li><strong>Permission denied:</strong> Ensure your GitHub account has access to the repository</li>
+          <li><strong>OAuth error:</strong> Verify callback URLs match exactly</li>
+        </ul>
+        
+        <h3>Content Not Publishing</h3>
+        <ul>
+          <li><strong>Check Git status:</strong> Ensure changes are committed to the main branch</li>
+          <li><strong>GitHub Pages:</strong> Verify GitHub Pages is enabled and pointing to main branch</li>
+          <li><strong>Build errors:</strong> Check GitHub Actions for any build failures</li>
+        </ul>
+        
+        <h2 id="security">Security Features</h2>
+        
+        <div class="success">
+          <strong>🔒 Enterprise-Grade Security:</strong>
+          <ul>
+            <li><strong>GitHub OAuth:</strong> Only your GitHub account can access the CMS</li>
+            <li><strong>No Passwords:</strong> No hardcoded credentials or stored passwords</li>
+            <li><strong>Session Management:</strong> Secure session handling with automatic logout</li>
+            <li><strong>Audit Trail:</strong> All actions are logged and tracked in Git</li>
+            <li><strong>HTTPS Only:</strong> All communication is encrypted</li>
+            <li><strong>Rate Limiting:</strong> Protection against brute force attacks</li>
+          </ul>
+        </div>
+        
+        <h2 id="support">Support & Resources</h2>
+        
+        <p>
+          If you need help with your CMS setup or have questions about using it:
+        </p>
+        
+        <div class="btn-group">
+          <a href="https://docs.netlify.com/visitor-access/identity/" target="_blank" class="btn">📖 Netlify Identity Docs</a>
+          <a href="https://www.netlifycms.org/docs/" target="_blank" class="btn">📚 Netlify CMS Docs</a>
+          <a href="https://github.com/netlify/netlify-cms" target="_blank" class="btn">🐙 GitHub Repository</a>
+        </div>
+        
+        <div class="info">
+          <strong>💡 Pro Tips:</strong>
+          <ul>
+            <li>Use markdown for better content formatting</li>
+            <li>Organize posts with consistent tags and categories</li>
+            <li>Upload images in web-optimized formats (JPG, PNG, WebP)</li>
+            <li>Use descriptive filenames for better SEO</li>
+            <li>Preview posts before publishing</li>
+          </ul>
+        </div>
+        
+        <div class="btn-group">
+          <a href="/admin/cms.html" class="btn">🚀 Open CMS Now</a>
+          <a href="/admin/" class="btn btn-secondary">← Back to Admin</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="help-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Dr. Kelly Saint Denny - Secure CMS Help</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/assets/script.js"></script>
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

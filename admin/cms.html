@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Management System – Dr. Kelly Saint Denny</title>
+  <meta name="description" content="Secure content management for kellysaintdenny.com" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://kellysaintdenny.com/admin/cms.html" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .cms-container {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .cms-header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    
+    .cms-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cms-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    .cms-brand img {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .cms-nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .cms-nav a {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background .2s ease;
+    }
+    
+    .cms-nav a:hover {
+      background: color-mix(in srgb, var(--accent) 80%, transparent);
+    }
+    
+    .cms-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .cms-content {
+      flex: 1;
+      padding: 2rem 0;
+    }
+    
+    .cms-info {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    
+    .cms-info h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    
+    .cms-info p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    
+    .cms-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 3rem 0;
+    }
+    
+    .cms-loading .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--border);
+      border-top: 4px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .cms-loading .text {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    
+    .cms-error {
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #dc2626;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    
+    .cms-error h3 {
+      margin: 0 0 1rem;
+      color: #dc2626;
+    }
+    
+    .cms-error ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .cms-error li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    
+    .cms-error code {
+      background: #fee2e2;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+      border: 1px solid #fca5a5;
+    }
+    
+    .cms-success {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #10b981;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    
+    .cms-success h3 {
+      margin: 0 0 1rem;
+      color: #065f46;
+    }
+    
+    .cms-success p {
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    .cms-iframe {
+      width: 100%;
+      height: calc(100vh - 80px);
+      border: none;
+      background: white;
+    }
+    
+    .cms-footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+      text-align: center;
+      color: var(--muted);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background .2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn:hover {
+      background: color-mix(in srgb, var(--accent) 80%, transparent);
+    }
+    
+    .btn-secondary {
+      background: var(--muted);
+      color: var(--text);
+    }
+    
+    .btn-secondary:hover {
+      background: color-mix(in srgb, var(--muted) 80%, transparent);
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="cms-container">
+    <header class="cms-header">
+      <div class="container">
+        <a href="/admin/" class="cms-brand">
+          <img src="/assets/logo.svg" alt="" />
+          <span>Dr. Kelly Saint Denny - CMS</span>
+        </a>
+        <nav class="cms-nav">
+          <a href="/" target="_blank">View Site</a>
+          <a href="/admin/" target="_blank">Admin Home</a>
+          <button id="theme-toggle" class="btn btn-secondary">🌓</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="cms-main">
+      <div class="cms-content">
+        <!-- Loading State -->
+        <div id="cmsLoading" class="cms-loading">
+          <div class="spinner"></div>
+          <div class="text">Loading Content Management System...</div>
+        </div>
+        
+        <!-- Error State -->
+        <div id="cmsError" class="cms-error" style="display: none;">
+          <h3>⚠️ CMS Loading Error</h3>
+          <p>
+            There was an issue loading the Content Management System. This usually happens when:
+          </p>
+          <ul>
+            <li>The CMS configuration needs to be set up</li>
+            <li>GitHub authentication is not configured</li>
+            <li>There's a network connectivity issue</li>
+          </ul>
+          <p>
+            <strong>Solution:</strong> Please check the setup instructions in the 
+            <a href="/admin/help.html" style="color: #dc2626;">Help & Documentation</a> section.
+          </p>
+        </div>
+        
+        <!-- Success State -->
+        <div id="cmsSuccess" class="cms-success" style="display: none;">
+          <h3>✅ CMS Loaded Successfully</h3>
+          <p>
+            Your Content Management System is now ready! You can create, edit, and manage 
+            your blog posts securely through the interface below.
+          </p>
+        </div>
+        
+        <!-- CMS Interface -->
+        <div id="cmsInterface" style="display: none;">
+          <iframe 
+            src="https://kellysaintdenny.com/admin/cms/index.html" 
+            class="cms-iframe"
+            title="Content Management System"
+            allow="camera; microphone; geolocation"
+          ></iframe>
+        </div>
+        
+        <!-- Fallback Content -->
+        <div id="cmsFallback" class="cms-info" style="display: none;">
+          <h1>Content Management System</h1>
+          <p>
+            Welcome to your secure content management system! This interface provides 
+            professional-grade tools for managing your blog content.
+          </p>
+          
+          <div class="btn-group">
+            <a href="/admin/help.html" class="btn">📚 Setup Instructions</a>
+            <a href="/admin/" class="btn btn-secondary">← Back to Admin</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="cms-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Dr. Kelly Saint Denny - Secure CMS Portal</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/assets/script.js"></script>
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // CMS Loading Logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const loading = document.getElementById('cmsLoading');
+      const error = document.getElementById('cmsError');
+      const success = document.getElementById('cmsSuccess');
+      const interface = document.getElementById('cmsInterface');
+      const fallback = document.getElementById('cmsFallback');
+      
+      // Simulate loading process
+      setTimeout(() => {
+        loading.style.display = 'none';
+        
+        // Check if CMS is accessible
+        const cmsUrl = 'https://kellysaintdenny.com/admin/cms/index.html';
+        
+        // For now, show fallback content
+        // In production, this would check if the CMS is properly configured
+        fallback.style.display = 'block';
+        
+        // If you want to test the actual CMS, uncomment this:
+        // success.style.display = 'block';
+        // interface.style.display = 'block';
+        
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

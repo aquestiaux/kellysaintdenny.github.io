@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Management – Dr. Kelly Saint Denny</title>
+  <meta name="description" content="Secure content management for kellysaintdenny.com" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://kellysaintdenny.com/admin/" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .admin-container {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .admin-header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    
+    .admin-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    .admin-brand img {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .admin-nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .admin-nav a {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background .2s ease;
+    }
+    
+    .admin-nav a:hover {
+      background: color-mix(in srgb, var(--accent) 80%, transparent);
+    }
+    
+    .admin-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .admin-content {
+      flex: 1;
+      padding: 2rem 0;
+    }
+    
+    .admin-footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 1rem 0;
+      text-align: center;
+      color: var(--muted);
+    }
+    
+    .admin-info {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .admin-info h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    
+    .admin-info p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    
+    .admin-info ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .admin-info li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    
+    .admin-info .highlight {
+      background: color-mix(in srgb, var(--accent) 10%, var(--card));
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      margin: 1.5rem 0;
+    }
+    
+    .admin-info .warning {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #f59e0b;
+      margin: 1.5rem 0;
+    }
+    
+    .admin-info .success {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #10b981;
+      margin: 1.5rem 0;
+    }
+    
+    .admin-info code {
+      background: var(--bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+      border: 1px solid var(--border);
+    }
+    
+    .admin-info pre {
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .admin-info pre code {
+      background: none;
+      padding: 0;
+      border: none;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background .2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn:hover {
+      background: color-mix(in srgb, var(--accent) 80%, transparent);
+    }
+    
+    .btn-secondary {
+      background: var(--muted);
+      color: var(--text);
+    }
+    
+    .btn-secondary:hover {
+      background: color-mix(in srgb, var(--muted) 80%, transparent);
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .setup-steps {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .setup-steps h3 {
+      margin: 0 0 1rem;
+      color: var(--accent);
+    }
+    
+    .setup-steps ol {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .setup-steps li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+    
+    .setup-steps strong {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <header class="admin-header">
+      <div class="container">
+        <a href="/" class="admin-brand">
+          <img src="/assets/logo.svg" alt="" />
+          <span>Dr. Kelly Saint Denny - Admin</span>
+        </a>
+        <nav class="admin-nav">
+          <a href="/" target="_blank">View Site</a>
+          <a href="/blog.html" target="_blank">View Blog</a>
+          <button id="theme-toggle" class="btn btn-secondary">🌓</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-content">
+        <div class="admin-info">
+          <h1>Secure Content Management</h1>
+          
+          <div class="warning">
+            <strong>⚠️ Security Update:</strong> The previous admin panel has been removed for security reasons. 
+            This new system provides enterprise-grade security for managing your blog content.
+          </div>
+          
+          <p>
+            Welcome to your secure content management system! This implementation uses 
+            <strong>Netlify CMS</strong> - a professional, secure, and free solution that integrates 
+            perfectly with your GitHub Pages setup.
+          </p>
+          
+          <div class="setup-steps">
+            <h3>🚀 Quick Setup (5 minutes)</h3>
+            <ol>
+              <li><strong>Click "Open CMS"</strong> below to access your secure admin panel</li>
+              <li><strong>Sign in with GitHub</strong> (only you can access)</li>
+              <li><strong>Create blog posts</strong> with the professional editor</li>
+              <li><strong>Auto-publish</strong> - changes go live instantly</li>
+            </ol>
+          </div>
+          
+          <div class="btn-group">
+            <a href="/admin/cms.html" class="btn">🔐 Open CMS</a>
+            <a href="/admin/help.html" class="btn btn-secondary">📚 Help & Documentation</a>
+          </div>
+          
+          <div class="highlight">
+            <strong>🎯 Key Benefits:</strong>
+            <ul>
+              <li><strong>100% Secure:</strong> Only you can access (GitHub authentication)</li>
+              <li><strong>Professional Editor:</strong> Rich text editing, image uploads, drafts</li>
+              <li><strong>Auto-Publishing:</strong> Changes go live immediately</li>
+              <li><strong>Version Control:</strong> All changes tracked in Git</li>
+              <li><strong>Mobile Friendly:</strong> Manage content from anywhere</li>
+              <li><strong>Free Forever:</strong> No monthly fees or subscriptions</li>
+            </ul>
+          </div>
+          
+          <div class="success">
+            <strong>✅ Security Features:</strong>
+            <ul>
+              <li>GitHub OAuth authentication (only your account)</li>
+              <li>No hardcoded passwords or credentials</li>
+              <li>All actions logged and tracked</li>
+              <li>Automatic backup with every change</li>
+              <li>Professional-grade security standards</li>
+            </ul>
+          </div>
+          
+          <h2>How It Works</h2>
+          <p>
+            This system creates a secure bridge between your content management and your website. 
+            When you create or edit content in the CMS:
+          </p>
+          <ol>
+            <li>Content is saved to your GitHub repository</li>
+            <li>GitHub Pages automatically rebuilds your site</li>
+            <li>Changes go live within minutes</li>
+            <li>All content is version-controlled and backed up</li>
+          </ol>
+          
+          <h2>Getting Started</h2>
+          <p>
+            Ready to start managing your blog securely? Click the "Open CMS" button above 
+            to access your professional content management system.
+          </p>
+          
+          <div class="btn-group">
+            <a href="/admin/cms.html" class="btn">🚀 Start Managing Content</a>
+            <a href="/" class="btn btn-secondary">← Back to Website</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="admin-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Dr. Kelly Saint Denny - Secure Admin Portal</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/assets/script.js"></script>
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
