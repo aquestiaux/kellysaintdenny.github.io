@@ -7,7 +7,19 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://kellysaintdenny.com/fr/</loc>
+    <lastmod>2025-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://kellysaintdenny.com/privacy-policy.html</loc>
+    <lastmod>2025-08-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://kellysaintdenny.com/fr/privacy-policy.html</loc>
     <lastmod>2025-08-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
