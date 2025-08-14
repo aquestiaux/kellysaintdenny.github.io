@@ -1,11 +1,17 @@
-backend:
-  name: github
-  repo: aquestiaux/kellysaintdenny.github.io
-  branch: main
-  base_url: https://kellysaintdenny.com
-  auth_endpoint: api
+# OAuth Configuration
+# You'll need to create a GitHub OAuth app and add these credentials
+# backend:
+#   name: github
+#   repo: aurel/fairshareapps
+#   branch: main
+#   base_url: https://kellysaintdenny.com
 
-local_backend: false
+# For now, let's use the local backend for testing
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
@@ -13,42 +19,30 @@ public_folder: "/assets/uploads"
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "_posts"
+    folder: "blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Author", name: "author", widget: "string", default: "Dr. Kelly Saint Denny"}
-      - {label: "Categories", name: "categories", widget: "list", default: ["Blog"]}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list", default: []}
       - {label: "Featured Image", name: "image", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Language", name: "language", widget: "select", options: ["en", "fr"], default: "en"}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
-      - {label: "SEO Title", name: "seo_title", widget: "string", required: false}
-      - {label: "SEO Description", name: "seo_description", widget: "text", required: false}
+      - {label: "Reading Time", name: "readingTime", widget: "string", required: false}
 
   - name: "pages"
     label: "Pages"
-    files:
-      - file: "index.html"
-        label: "Home Page"
-        name: "home"
-        fields:
-          - {label: "Page Title", name: "title", widget: "string"}
-          - {label: "Meta Description", name: "description", widget: "text"}
-          - {label: "Content", name: "body", widget: "markdown"}
-      
-      - file: "blog.html"
-        label: "Blog Page"
-        name: "blog"
-        fields:
-          - {label: "Page Title", name: "title", widget: "string"}
-          - {label: "Meta Description", name: "description", widget: "text"}
-          - {label: "Intro Text", name: "intro", widget: "text"}
+    folder: ""
+    create: false
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "settings"
     label: "Site Settings"

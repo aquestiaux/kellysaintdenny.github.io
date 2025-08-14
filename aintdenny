@@ -1,0 +1,5 @@
+[33mf142cca[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m  Update logo from KS to KSD for better branding
+[33m026699b[m  Remove Fairshare logo, update branding to Dr. Kelly Saint Denny
+[33m76dd300[m  CRITICAL SECURITY: Add admin panel redirect and security headers
+[33m2dd668e[m  SECURITY UPDATE: Replace insecure admin panel with enterprise-grade Netlify CMS
+[33m1cc7fda[m Add WordPress-like admin panel for blog management

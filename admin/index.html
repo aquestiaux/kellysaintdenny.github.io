@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://kellysaintdenny.com/admin/" />
   <meta name="theme-color" content="#4f46e5" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     .admin-container {
       min-height: 100vh;
@@ -232,6 +233,7 @@
         <nav class="admin-nav">
           <a href="/" target="_blank">View Site</a>
           <a href="/blog.html" target="_blank">View Blog</a>
+          <div data-netlify-identity-menu></div>
           <button id="theme-toggle" class="btn btn-secondary">🌓</button>
         </nav>
       </div>
@@ -328,6 +330,19 @@
   <script>
     // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Netlify Identity: handle login/logout
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          // User is not logged in
+          console.log('User not logged in');
+        } else {
+          // User is logged in
+          console.log('User logged in:', user.email);
+        }
+      });
+    }
   </script>
 </body>
 </html>
