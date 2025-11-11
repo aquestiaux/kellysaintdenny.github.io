@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
   const root = document.documentElement;
   const themeKey = 'fs_theme';
   const languageKey = 'fs_language';
@@ -15,7 +15,7 @@
       const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       localStorage.setItem(themeKey, next);
-      toggle.setAttribute('aria-pressed', String(next === 'dark'));
+      toggle.setAttribute('aria-pressed', String(next === 'dark')); updateThemeToggleIcon();
     });
   }
 
@@ -60,8 +60,8 @@
         // Update button text
         const languageBtn = document.querySelector('.language-btn');
         if (languageBtn) {
-          const flag = lang === 'en' ? '🇺🇸' : '🇫🇷';
-          const text = lang === 'en' ? 'English' : 'Français';
+          const flag = lang === 'en' ? 'ðŸ‡ºðŸ‡¸' : 'ðŸ‡«ðŸ‡·';
+          const text = lang === 'en' ? 'English' : 'FranÃ§ais';
           languageBtn.innerHTML = `<span class="flag">${flag}</span><span>${text}</span>`;
         }
       } else {
@@ -97,4 +97,11 @@
   // Year update
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+}  function updateThemeToggleIcon() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    toggle.textContent = isDark ? 'â˜€ï¸' : 'ðŸŒ™';
+  }
+  updateThemeToggleIcon();
 })();
